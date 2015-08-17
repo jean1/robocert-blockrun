@@ -1,0 +1,9 @@
+
+X Ajouter authentification sur les deux sites
+	- block-create : ip machine RT
+	- block-run : login Securité
+X test
+	- envoi XML
+
+- Envoyer un commentaire suite au filtrage
+- fixer tous les FIXME

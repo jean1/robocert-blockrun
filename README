@@ -1,0 +1,38 @@
+* Fonctions 
+
+Pour activer un blocage IP :
+
+	/filter/_hash_
+
+Le programme va rechercher le fichier du nom du hash, y lit l'adresse IP
+et lance le programme qui installe le blocage sur le routeur/firewall
+
+Authentification : les logins qui sont autorises a activer les blocages sont
+decrits dans la configuration Apache
+
+Pour desactiver un blocage IP :
+
+	/unfilter/_hash_
+
+Le programme va rechercher le fichier du nom du hash, y lit l'adresse IP
+et lance le programme qui desactive le blocage sur le routeur/firewall
+
+Authentification : les logins qui sont autorises a desactiver les
+blocages sont decrits dans la configuration Apache
+
+* Modifications sur les routeurs
+
+L'utilisateur sous lequel s'execute le script (www, www-data)
+doit etre autorise a executer les scripts
+	/home/acl/bin/block
+	/home/acl/bin/unblock
+dans la configuration de sudo (le fichier sudoers) :
+
+	www	topo = (acl) NOPASSWD: /home/acl/bin/block [a-z0-9-]* [0-9.]* [-a-z\,0-9]*, /home/acl/bin/unblock [a-z0-9-]* [0-9.]*
+
+Les scripts doivent etre execute sous l'utilisateur 'acl' afin de
+reduire les privileges sur le serveur.
+
+L'utilisateur 'acl' doit avoir un fichier ~/.cloginrc qui contient
+les parametres de connexion aux routeurs pour 
+
